@@ -12,9 +12,14 @@ def jiami():
         'iat': time.time(),
         'name': 'lowman'
     }
-    jwt_token = jwt.encode(token_dict,"123456",algorithm="HS256",headers=headers)
+    
+    #生成带hash的
+    #jwt_token = jwt.encode(token_dict,"123456",algorithm="HS256",headers=headers)
+    
+    #如果生成无hash策略的
+    jwt_token = jwt.encode(token_dict, "123456", algorithm="HS256", headers=headers)
     print(jwt_token)
-
+jiami()
 #解析jwt
 def jiemi(key):
     jwt_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXJyZW50VGltZU1pbGxpcyI6IjE2MTkwMTk2NDg3ODUiLCJjaGFubmVsTmFtZSI6ImRraiIsInVzZXJUeXBlIjoiQ0hBTk5FTCIsImV4cCI6MTYxOTE5MjQ0OH0.m67IKFRO6DqD4I4LLs7x9zklCQnCOK14p-pBLYw1M9g"
@@ -31,9 +36,9 @@ def jiemi(key):
 # jiami()
 # jiemi('123456')
 
-with open('big-pass.txt','r') as f:
-    key_list=f.read().split('\n')
-for key in key_list:
-    brute=jiemi(key)
-    if brute==True:
-        break
+# with open('big-pass.txt','r') as f:
+#     key_list=f.read().split('\n')
+# for key in key_list:
+#     brute=jiemi(key)
+#     if brute==True:
+#         break
